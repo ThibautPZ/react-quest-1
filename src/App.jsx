@@ -32,10 +32,10 @@ const pokemonList = [
 function App() {
   let [pokemonIndex, setI] = useState(0);
   const nextPoke = () => {
-    setI(pokemonIndex++);
+    setI(() => pokemonIndex + 1);
   };
   const previousPoke = () => {
-    setI(pokemonIndex--);
+    setI(() => pokemonIndex - 1);
   };
   return (
     <>
@@ -49,14 +49,14 @@ function App() {
             Previous pokemon : {pokemonList[pokemonIndex - 1].name}
           </button>
         ) : (
-          <button disabled={true}>Previous pokemon</button>
+          <button disabled={true}>No previous pokemon</button>
         )}
         {pokemonIndex < pokemonList.length - 1 ? (
           <button onClick={nextPoke}>
             Next pokemon : {pokemonList[pokemonIndex + 1].name}
           </button>
         ) : (
-          <button disabled={true}>Next pokemon</button>
+          <button disabled={true}>No pokemon left</button>
         )}
       </div>
     </>
