@@ -4,6 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
+img{
+max-width: 475px ;
+max-height: 475px;
+}
 
 .logo {
   height: 6em;
