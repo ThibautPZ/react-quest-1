@@ -2,6 +2,7 @@ import "./App.css";
 import { PropTypes } from "prop-types";
 import { useState } from "react";
 import PokemonCard from "./components/PokemonCard";
+import NavBar from "./components/NavBar";
 
 const pokemonList = [
   {
@@ -30,34 +31,20 @@ const pokemonList = [
 ];
 
 function App() {
-  let [pokemonIndex, setI] = useState(0);
-  const nextPoke = () => {
-    setI(pokemonIndex++);
-  };
-  const previousPoke = () => {
-    setI(pokemonIndex--);
-  };
+  const [pkmnIndex, setPkmnIndex] = useState(0);
   return (
     <>
       <div>
         <PokemonCard
-          name={pokemonList[pokemonIndex].name}
-          imgSrc={pokemonList[pokemonIndex].imgSrc}
+          name={pokemonList[pkmnIndex].name}
+          imgSrc={pokemonList[pkmnIndex].imgSrc}
+          pkmnIndex={pkmnIndex}
         />
-        {pokemonIndex > 0 ? (
-          <button onClick={previousPoke}>
-            Previous pokemon : {pokemonList[pokemonIndex - 1].name}
-          </button>
-        ) : (
-          <button disabled={true}>Previous pokemon</button>
-        )}
-        {pokemonIndex < pokemonList.length - 1 ? (
-          <button onClick={nextPoke}>
-            Next pokemon : {pokemonList[pokemonIndex + 1].name}
-          </button>
-        ) : (
-          <button disabled={true}>Next pokemon</button>
-        )}
+        <NavBar
+          pkmnIndex={pkmnIndex}
+          setPkmnIndex={setPkmnIndex}
+          pokemonList={pokemonList}
+        />
       </div>
     </>
   );

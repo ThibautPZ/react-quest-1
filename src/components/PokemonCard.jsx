@@ -1,8 +1,11 @@
 import { PropTypes } from "prop-types";
 import { useState } from "react";
 
-const PokemonCard = (pokemonList) => {
-  const { name, imgSrc } = pokemonList;
+const PokemonCard = (props) => {
+  const name = props.name;
+  const imgSrc = props.imgSrc;
+  const pkmnIndex = props.pkmnIndex;
+  const setPkmnIndex = props.setPkmnIndex;
 
   return (
     <figure>
@@ -15,7 +18,7 @@ const PokemonCard = (pokemonList) => {
 PokemonCard.propTypes = {
   pokemonList: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    imgSrc: PropTypes.string.isRequired,
+    imgSrc: PropTypes.any.isRequired,
   }),
 };
 
