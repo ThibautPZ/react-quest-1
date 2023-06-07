@@ -1,19 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 
-const NavBar = (props) => {
-  //   const name = props.name;
-  //   const imgSrc = props.imgSrc;
-  const pkmnIndex = props.pkmnIndex;
-  const setPkmnIndex = props.setPkmnIndex;
-  const pokemonList = props.pokemonList;
-  console.log(pkmnIndex);
-  console.log(pokemonList);
+const NavBar = ({ pkmnIndex, setPkmnIndex, pokemonList }) => {
   const nextPoke = () => {
     setPkmnIndex(() => pkmnIndex + 1);
   };
   const previousPoke = () => {
     setPkmnIndex(() => pkmnIndex - 1);
   };
+  useEffect(() => {
+    pkmnIndex === 3 && alert("pika pikachu !!!");
+  });
   return (
     <div>
       {pkmnIndex > 0 ? (
@@ -23,7 +19,7 @@ const NavBar = (props) => {
       )}
 
       {pkmnIndex < pokemonList.length - 1 ? (
-        <button onClick={nextPoke}>Next pokemon</button>
+        <button onClick={nextPoke}>Next Pokemon</button>
       ) : (
         <button disabled={true}>No pokemon next</button>
       )}
